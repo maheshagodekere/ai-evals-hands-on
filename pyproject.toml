@@ -1,0 +1,12 @@
+# Nothing to install: the code uses only the Python standard library (Python 3.10 or newer).
+# This file holds the formatter and linter settings (ruff: `ruff format`, `ruff check`).
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["results"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+# E501: the long lines that remain are prompt text and HTML templates, kept exactly as sent.
+# E741: short loop names such as `l` for a line are fine in these small scripts.
+ignore = ["E501", "E741"]

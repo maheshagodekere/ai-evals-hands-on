@@ -1,0 +1,9 @@
+{
+ "name": "smoke2",
+ "exit": 0,
+ "minutes": 0.2,
+ "agent_cost_estimate_usd": 0.027432599999999998,
+ "turns": 7,
+ "evals": 0,
+ "study_total_usd": 11.907
+}

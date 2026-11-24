@@ -1,0 +1,57 @@
+{
+ "autoMemoryEnabled": false,
+ "permissions": {
+  "deny": [
+   "WebFetch",
+   "WebSearch",
+   "Read(//sandbox/secret/**)",
+   "Read(<project>/ai-evals/test/**)",
+   "Read(/~/.ssh/**)",
+   "Read(/~/.aws/**)",
+   "Read(/~/.config/**)",
+   "Read(/~/.claude/**)",
+   "Read(/~/work/**)",
+   "Read(/~/Library/**)",
+   "Edit(//sandbox/ws/policy.md)",
+   "Edit(//sandbox/ws/dev_cases.jsonl)",
+   "Edit(//sandbox/ws/run_eval.py)",
+   "Edit(//sandbox/ws/TASK.md)",
+   "Write(//sandbox/ws/policy.md)",
+   "Write(//sandbox/ws/dev_cases.jsonl)",
+   "Write(//sandbox/ws/run_eval.py)",
+   "Write(//sandbox/ws/TASK.md)",
+   "Edit(//sandbox/ws/eval_results/**)",
+   "Write(//sandbox/ws/eval_results/**)"
+  ],
+  "blockWritesOutsideWorkingDirectories": true
+ },
+ "sandbox": {
+  "enabled": true,
+  "failIfUnavailable": true,
+  "autoAllowBashIfSandboxed": true,
+  "allowUnsandboxedCommands": false,
+  "filesystem": {
+   "denyRead": [
+    "/sandbox/secret",
+    "<project>/ai-evals/test",
+    "~/.ssh",
+    "~/.aws",
+    "~/.config",
+    "~/.claude",
+    "~/work",
+    "~/Library"
+   ],
+   "denyWrite": [
+    "/sandbox/ws/policy.md",
+    "/sandbox/ws/dev_cases.jsonl",
+    "/sandbox/ws/run_eval.py",
+    "/sandbox/ws/TASK.md",
+    "/sandbox/ws/eval_results"
+   ]
+  },
+  "network": {
+   "allowedDomains": [],
+   "strictAllowlist": true
+  }
+ }
+}

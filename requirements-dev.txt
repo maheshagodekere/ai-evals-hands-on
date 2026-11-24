@@ -1,0 +1,4 @@
+# Optional, for working on the code: the formatter and linter (settings in pyproject.toml).
+#   ruff format --check .
+#   ruff check .
+ruff>=0.6

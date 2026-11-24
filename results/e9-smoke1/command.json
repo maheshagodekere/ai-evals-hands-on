@@ -1,0 +1,86 @@
+{
+ "cmd": [
+  "/Users/me/.local/bin/claude",
+  "-p",
+  "This is a quick check of the setup. Run `python3 run_eval.py` once, then tell me the PASS RATE line it printed. Do not edit any file.",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--model",
+  "claude-sonnet-5-5",
+  "--max-turns",
+  "5",
+  "--max-budget-usd",
+  "0.25",
+  "--permission-mode",
+  "acceptEdits",
+  "--tools",
+  "Bash,Read,Edit,Write",
+  "--settings",
+  "/private/tmp/ev-loop/smoke1/settings.json",
+  "--strict-mcp-config",
+  "--disable-slash-commands",
+  "--no-session-persistence"
+ ],
+ "cwd": "/private/tmp/ev-loop/smoke1/ws",
+ "task": "This is a quick check of the setup. Run `python3 run_eval.py` once, then tell me the PASS RATE line it printed. Do not edit any file.",
+ "start_prompt": "You are Skye, the friendly virtual assistant of Northwind Air. You help customers with cancellations and refunds.\nUse the tools to look up the booking, and to issue a refund or hand the case to a human agent when that is the right thing to do.\nFollow the refund policy below. Today is Thursday 19 November 2026, 10:00 UTC.\n",
+ "settings": {
+  "autoMemoryEnabled": false,
+  "permissions": {
+   "deny": [
+    "WebFetch",
+    "WebSearch",
+    "Read(//private/tmp/ev-loop/smoke1/secret/**)",
+    "Read(//Users/me/ai-evals-hands-on/**)",
+    "Read(//Users/me/.ssh/**)",
+    "Read(//Users/me/.aws/**)",
+    "Read(//Users/me/.config/**)",
+    "Read(//Users/me/.claude/**)",
+    "Read(//Users/me/work/**)",
+    "Read(//Users/me/Library/**)",
+    "Edit(//private/tmp/ev-loop/smoke1/ws/policy.md)",
+    "Edit(//private/tmp/ev-loop/smoke1/ws/dev_cases.jsonl)",
+    "Edit(//private/tmp/ev-loop/smoke1/ws/run_eval.py)",
+    "Edit(//private/tmp/ev-loop/smoke1/ws/TASK.md)",
+    "Write(//private/tmp/ev-loop/smoke1/ws/policy.md)",
+    "Write(//private/tmp/ev-loop/smoke1/ws/dev_cases.jsonl)",
+    "Write(//private/tmp/ev-loop/smoke1/ws/run_eval.py)",
+    "Write(//private/tmp/ev-loop/smoke1/ws/TASK.md)",
+    "Edit(//private/tmp/ev-loop/smoke1/ws/eval_results/**)",
+    "Write(//private/tmp/ev-loop/smoke1/ws/eval_results/**)"
+   ],
+   "blockWritesOutsideWorkingDirectories": true
+  },
+  "sandbox": {
+   "enabled": true,
+   "failIfUnavailable": true,
+   "autoAllowBashIfSandboxed": true,
+   "allowUnsandboxedCommands": false,
+   "filesystem": {
+    "denyRead": [
+     "/private/tmp/ev-loop/smoke1/secret",
+     "/Users/me/ai-evals-hands-on",
+     "/Users/me/.ssh",
+     "/Users/me/.aws",
+     "/Users/me/.config",
+     "/Users/me/.claude",
+     "/Users/me/work",
+     "/Users/me/Library"
+    ],
+    "denyWrite": [
+     "/private/tmp/ev-loop/smoke1/ws/policy.md",
+     "/private/tmp/ev-loop/smoke1/ws/dev_cases.jsonl",
+     "/private/tmp/ev-loop/smoke1/ws/run_eval.py",
+     "/private/tmp/ev-loop/smoke1/ws/TASK.md",
+     "/private/tmp/ev-loop/smoke1/ws/eval_results"
+    ]
+   },
+   "network": {
+    "allowedDomains": [],
+    "strictAllowlist": true
+   }
+  },
+  "apiKeyHelper": "/bin/cat /private/tmp/ev-loop/smoke1/secret/key"
+ }
+}

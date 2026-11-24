@@ -1,0 +1,21 @@
+{
+ "argv": [
+  "run_bot.py",
+  "results/cases.jsonl",
+  "results/main-v1",
+  "--model",
+  "claude-haiku-5-5",
+  "--prompt",
+  "prompt_v1.txt",
+  "--reps",
+  "5",
+  "--results-root",
+  "results",
+  "--cap",
+  "30",
+  "--workers",
+  "10"
+ ],
+ "prompt_text": "You are Skye, the friendly virtual assistant of Northwind Air. You help customers with cancellations and refunds.\nUse the tools to look up the booking, and to issue a refund or hand the case to a human agent when that is the right thing to do.\nFollow the refund policy below. Today is Thursday 19 November 2026, 10:00 UTC.\n\n<policy>\n{policy}\n</policy>",
+ "started": 1795102097.873249
+}

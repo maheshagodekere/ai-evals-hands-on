@@ -1,0 +1,9 @@
+{
+ "name": "loop1",
+ "exit": 0,
+ "minutes": 4.9,
+ "agent_cost_estimate_usd": 0.15391160000000004,
+ "turns": 11,
+ "evals": 6,
+ "study_total_usd": 23.1136
+}

@@ -1,0 +1,5 @@
+Your booking H93PSE is cancelled, and you have $339.00 in travel credit. The credit is valid for 12 months from today. The reference for this transaction is RF-H93PSE.
+
+I know this isn't the cash refund you were hoping for. If you want the phone promise reviewed by a person, I can hand that over, or you can use the feedback form at northwind.example/feedback. Thank you for flying with Northwind Air, Mr. Mensah.
+
+CODE CHECKS: looked_up PASS, right_action PASS, right_amount PASS, one_action PASS, no_internal_id PASS, replied PASS, all_code PASS

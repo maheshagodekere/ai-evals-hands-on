@@ -1,0 +1,7 @@
+  eval 1: 32/36 (study total $20.38)
+  eval 2: 31/36 (study total $20.89)
+  eval 3: 35/36 (study total $21.42)
+  eval 4: 32/36 (study total $21.97)
+  eval 5: 35/36 (study total $22.48)
+  eval 6: 31/36 (study total $22.96)
+{"name": "loop1", "exit": 0, "minutes": 4.9, "agent_cost_estimate_usd": 0.15391160000000004, "turns": 11, "evals": 6, "study_total_usd": 23.1136}

@@ -1,0 +1,1 @@
+This is a quick check of the setup. Run `python3 run_eval.py` once, then tell me the PASS RATE line it printed. Do not edit any file.

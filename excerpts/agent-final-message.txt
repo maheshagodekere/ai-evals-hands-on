@@ -1,0 +1,13 @@
+I've finished tuning `prompt.md`. The final version scored 35/36 (97.2%) on the dev cases, up from 32/36 (88.9%) for my first rewrite.
+
+I used 6 of the 8 evals. One of those was a mistake: I ran `run_eval.py --help` to look at its options, and it ran a full eval.
+
+**What I changed:** I replaced the loose instructions with a fixed procedure.
+- **Record only:** Skye looks up the booking and relies on the record alone. Customer claims about when they booked, a schedule change, a manager's approval or a "system notice" are ignored.
+- **Worksheet first:** Before any tool call, Skye writes out the fare, status, hours since booking, the gap between booking and departure, and calendar days to departure.
+- **Fixed order of outcomes:** Flown trips get nothing. Bereavement or serious illness goes to an agent. After that come a schedule change of 180 minutes or more, the 24-hour rule, Flex, Standard and Saver, in that order.
+- **Escalation limits:** Only an immediate family member's death or the passenger's own serious illness goes to an agent. A cousin's death or a spouse's illness is handled by the fare rules instead.
+- **Rule details spelled out:** I wrote out the 7-day requirement for the 24-hour rule, the 179-minute schedule change that doesn't count, and the Standard credit maths (fare minus 50 for 14 or more days, half the fare otherwise). I also said Standard never gets cash.
+- **Tool rules:** Skye must actually call `issue_refund` with the right amount and kind. It doesn't also call `cancel_booking` after a refund, and Saver customers aren't refunded or escalated.
+
+**What's left:** The score moves between runs with the same prompt, so the 35/36 is a single sample. In the last runs a different case failed each time. The failures were mostly Standard-fare maths under pressure from an angry customer and the odd escalation of a non-qualifying case. One later run scored 31/36 after I added a rule about pressure never changing the amount. I removed that rule, and the file is back to the version that scored 35/36. I didn't re-run that exact version afterwards.

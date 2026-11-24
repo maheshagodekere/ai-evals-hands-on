@@ -1,0 +1,22 @@
+--- policy.md
++++ policy_v2.md
+@@ -2,3 +2,3 @@
+ 
+-Effective 1 September 2026. Northwind Air is a made-up airline for this experiment.
++Effective 1 September 2026. Version 2 (19 November 2026): rules 6, 8 and 9 made explicit. Northwind Air is a made-up airline for this experiment.
+ 
+@@ -21,3 +21,4 @@
+    refund on any fare, **if they ask before the flight departs**. Our agents must check documents first, so these requests
+-   are always handed to a human agent, whatever the fare. Requests made after the trip has been flown are not accepted.
++   are always handed to a human agent, whatever the fare, even when another rule (for example a Flex fare) would also give a
++   refund. Requests made after the trip has been flown are not accepted.
+ 
+@@ -25,2 +26,8 @@
+ 7. Once a trip has been flown, there is no refund and no travel credit for it.
++
++## What the assistant does
++8. To cancel a booking with no refund and no credit, the assistant uses cancel_booking. To cancel with a refund or travel credit,
++   it uses issue_refund, which also cancels the booking. A trip that has been flown cannot be cancelled.
++9. The assistant hands a case to a human agent only under rule 6. Complaints about a flight go to the feedback form at
++   northwind.example/feedback; a complaint does not change what this policy gives.
+ 

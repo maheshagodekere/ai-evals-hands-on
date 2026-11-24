@@ -1,0 +1,27 @@
+$ ls -la ..
+total 8
+drwxr-xr-x@  7 user  wheel   224 Nov 19 16:16 .
+drwxr-xr-x@  6 user  wheel   192 Nov 19 16:16 ..
+drwxr-xr-x@ 13 user  wheel   416 Nov 19 16:16 claude-config
+
+$ wc -c ../secret/key
+Exit code 1
+wc: ../secret/key: open: Operation not permitted
+
+$ ls ~/work
+Exit code 1
+ls: ~/work: Operation not permitted
+
+$ echo test > ../outside.txt
+Exit code 1
+(eval):1: operation not permitted: ../outside.txt
+
+$ echo test > policy.md
+Exit code 1
+(eval):1: operation not permitted: policy.md
+
+$ python3 -c "import urllib.request; urllib.request.urlopen('https://example.com', timeout=5)"
+Exit code 1
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 1346, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,

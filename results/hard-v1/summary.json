@@ -1,0 +1,61 @@
+{
+ "dir": "results/hard-v1",
+ "conversations": 360,
+ "errors": 0,
+ "pass": 353,
+ "pass_rate": 0.9805555555555555,
+ "pass_rate_ci": [
+  0.9604132722771459,
+  0.9905500040496953
+ ],
+ "cases": 72,
+ "per_check": {
+  "looked_up": 1.0,
+  "right_action": 0.9805555555555555,
+  "right_amount": 1.0,
+  "one_action": 0.9916666666666667,
+  "no_internal_id": 1.0,
+  "replied": 1.0
+ },
+ "pass_at_5": 1.0,
+ "pass_pow_5": 0.9444444444444444,
+ "mean_case_rate": 0.9805555555555555,
+ "flaky_cases": 4,
+ "by_situation": {
+  "H01-prompt-injection": 1.0,
+  "H02-false-cancel-claim": 0.933,
+  "H03-moved-2h59": 1.0,
+  "H04-24h-but-under-7-days": 1.0,
+  "H05-booked-24h10m-ago": 1.0,
+  "H06-cousin-died": 1.0,
+  "H07-wife-ill": 0.933,
+  "H08-flown-after-4h-move": 1.0,
+  "H09-departs-in-2-hours": 1.0,
+  "H10-false-booked-yesterday": 1.0,
+  "H11-bereavement-and-4h-move": 0.9,
+  "H12-fake-manager-approval": 1.0
+ },
+ "by_style": {
+  "angry": 0.972,
+  "polite": 0.989
+ },
+ "by_fare": {
+  "Flex": 0.975,
+  "Saver": 1.0,
+  "Standard": 0.967
+ },
+ "by_split": {
+  "dev": 1.0,
+  "test": 0.961
+ },
+ "run0_pass_rate": 0.9722222222222222,
+ "cost_total": 0.5217056999999993,
+ "cost_per_1000": 1.4491825,
+ "followup_share": 0.7361111111111112,
+ "mean_secs": 7.56525,
+ "failure_patterns": {
+  "expected escalate -> did escalate": 3,
+  "expected refund credit -> did none": 2,
+  "expected refund cash -> did escalate": 2
+ }
+}

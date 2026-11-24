@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ruff_cache/
+.venv/
+.DS_Store
+
+# your own runs ("Run it yourself" in README.md)
+runs/
+
+# made by scripts/results_page.py
+results.html

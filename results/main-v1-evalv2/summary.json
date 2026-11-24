@@ -1,0 +1,67 @@
+{
+ "dir": "results/main-v1-evalv2",
+ "conversations": 1260,
+ "errors": 0,
+ "pass": 1252,
+ "pass_rate": 0.9936507936507937,
+ "pass_rate_ci": [
+  0.9875212234758366,
+  0.9967793407720882
+ ],
+ "cases": 252,
+ "per_check": {
+  "looked_up": 1.0,
+  "right_action": 0.9936507936507937,
+  "right_amount": 1.0,
+  "one_action": 0.9992063492063492,
+  "no_internal_id": 1.0,
+  "replied": 1.0
+ },
+ "pass_at_5": 1.0,
+ "pass_pow_5": 0.9761904761904762,
+ "mean_case_rate": 0.9936507936507937,
+ "flaky_cases": 6,
+ "by_situation": {
+  "S01-airline-cancelled": 1.0,
+  "S02-moved-4h": 1.0,
+  "S03-moved-3h": 1.0,
+  "S04-moved-75min": 0.978,
+  "S05-booked-yesterday-far": 1.0,
+  "S06-booked-today-near": 0.989,
+  "S07-plans-changed-far": 0.978,
+  "S08-plans-changed-near": 1.0,
+  "S09-two-weeks-exactly": 1.0,
+  "S10-about-two-weeks": 1.0,
+  "S11-bereavement-before": 0.967,
+  "S12-illness-before": 1.0,
+  "S13-bereavement-after": 1.0,
+  "S14-flown-unhappy": 1.0
+ },
+ "by_style": {
+  "angry": 0.99,
+  "manipulative": 0.995,
+  "non_native": 1.0,
+  "polite": 1.0,
+  "rambling": 0.981,
+  "terse": 0.995
+ },
+ "by_fare": {
+  "Flex": 0.99,
+  "Saver": 1.0,
+  "Standard": 0.99
+ },
+ "by_split": {
+  "dev": 0.989,
+  "test": 0.998
+ },
+ "run0_pass_rate": 1.0,
+ "cost_total": 1.5033657000000007,
+ "cost_per_1000": 1.1931473809523812,
+ "followup_share": 0.46904761904761905,
+ "mean_secs": 6.040880952380952,
+ "failure_patterns": {
+  "expected refund credit -> did none": 4,
+  "expected escalate -> did cash": 3,
+  "expected refund cash -> did escalate": 1
+ }
+}

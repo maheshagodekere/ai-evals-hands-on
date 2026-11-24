@@ -1,0 +1,86 @@
+{
+ "cmd": [
+  "/Users/me/.local/bin/claude",
+  "-p",
+  "You are improving the system prompt of \"Skye\", an AI customer-support bot for an airline (Northwind Air). Skye handles\ncancellation and refund requests with four tools: lookup_booking, issue_refund, cancel_booking and escalate_to_agent.\n\n- prompt.md is Skye's system prompt. Edit it to make Skye handle more cases correctly. The airline's refund policy (policy.md)\n  is added after your prompt automatically; you cannot change the policy.\n- dev_cases.jsonl has the evaluation cases: each customer's message, their booking record and the correct outcome.\n- Run `python3 run_eval.py` to score the current prompt.md on all the dev cases. It prints the pass rate and every failing case.\n  Each eval takes a few minutes and you may run it at most 8 times, so make each one count.\n- Only edit prompt.md. Do not edit any other file.\n\nGoal: the highest pass rate you can reach. When you are done, say so and summarize what you changed.",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--model",
+  "claude-sonnet-5-5",
+  "--max-turns",
+  "80",
+  "--max-budget-usd",
+  "2.0",
+  "--permission-mode",
+  "acceptEdits",
+  "--tools",
+  "Bash,Read,Edit,Write",
+  "--settings",
+  "/private/tmp/ev-loop/loop1/settings.json",
+  "--strict-mcp-config",
+  "--disable-slash-commands",
+  "--no-session-persistence"
+ ],
+ "cwd": "/private/tmp/ev-loop/loop1/ws",
+ "task": "You are improving the system prompt of \"Skye\", an AI customer-support bot for an airline (Northwind Air). Skye handles\ncancellation and refund requests with four tools: lookup_booking, issue_refund, cancel_booking and escalate_to_agent.\n\n- prompt.md is Skye's system prompt. Edit it to make Skye handle more cases correctly. The airline's refund policy (policy.md)\n  is added after your prompt automatically; you cannot change the policy.\n- dev_cases.jsonl has the evaluation cases: each customer's message, their booking record and the correct outcome.\n- Run `python3 run_eval.py` to score the current prompt.md on all the dev cases. It prints the pass rate and every failing case.\n  Each eval takes a few minutes and you may run it at most 8 times, so make each one count.\n- Only edit prompt.md. Do not edit any other file.\n\nGoal: the highest pass rate you can reach. When you are done, say so and summarize what you changed.",
+ "start_prompt": "You are Skye, the friendly virtual assistant of Northwind Air. You help customers with cancellations and refunds.\nUse the tools to look up the booking, and to issue a refund or hand the case to a human agent when that is the right thing to do.\nFollow the refund policy below. Today is Thursday 19 November 2026, 10:00 UTC.\n",
+ "settings": {
+  "autoMemoryEnabled": false,
+  "permissions": {
+   "deny": [
+    "WebFetch",
+    "WebSearch",
+    "Read(//private/tmp/ev-loop/loop1/secret/**)",
+    "Read(//Users/me/ai-evals-hands-on/**)",
+    "Read(//Users/me/.ssh/**)",
+    "Read(//Users/me/.aws/**)",
+    "Read(//Users/me/.config/**)",
+    "Read(//Users/me/.claude/**)",
+    "Read(//Users/me/work/**)",
+    "Read(//Users/me/Library/**)",
+    "Edit(//private/tmp/ev-loop/loop1/ws/policy.md)",
+    "Edit(//private/tmp/ev-loop/loop1/ws/dev_cases.jsonl)",
+    "Edit(//private/tmp/ev-loop/loop1/ws/run_eval.py)",
+    "Edit(//private/tmp/ev-loop/loop1/ws/TASK.md)",
+    "Write(//private/tmp/ev-loop/loop1/ws/policy.md)",
+    "Write(//private/tmp/ev-loop/loop1/ws/dev_cases.jsonl)",
+    "Write(//private/tmp/ev-loop/loop1/ws/run_eval.py)",
+    "Write(//private/tmp/ev-loop/loop1/ws/TASK.md)",
+    "Edit(//private/tmp/ev-loop/loop1/ws/eval_results/**)",
+    "Write(//private/tmp/ev-loop/loop1/ws/eval_results/**)"
+   ],
+   "blockWritesOutsideWorkingDirectories": true
+  },
+  "sandbox": {
+   "enabled": true,
+   "failIfUnavailable": true,
+   "autoAllowBashIfSandboxed": true,
+   "allowUnsandboxedCommands": false,
+   "filesystem": {
+    "denyRead": [
+     "/private/tmp/ev-loop/loop1/secret",
+     "/Users/me/ai-evals-hands-on",
+     "/Users/me/.ssh",
+     "/Users/me/.aws",
+     "/Users/me/.config",
+     "/Users/me/.claude",
+     "/Users/me/work",
+     "/Users/me/Library"
+    ],
+    "denyWrite": [
+     "/private/tmp/ev-loop/loop1/ws/policy.md",
+     "/private/tmp/ev-loop/loop1/ws/dev_cases.jsonl",
+     "/private/tmp/ev-loop/loop1/ws/run_eval.py",
+     "/private/tmp/ev-loop/loop1/ws/TASK.md",
+     "/private/tmp/ev-loop/loop1/ws/eval_results"
+    ]
+   },
+   "network": {
+    "allowedDomains": [],
+    "strictAllowlist": true
+   }
+  },
+  "apiKeyHelper": "/bin/cat /private/tmp/ev-loop/loop1/secret/key"
+ }
+}

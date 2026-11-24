@@ -1,0 +1,108 @@
+{
+ "argv": [
+  "run_bot.py",
+  "results/cases.jsonl",
+  "results/e8-haiku45-regtest",
+  "--model",
+  "claude-haiku-4-5-20251001",
+  "--prompt",
+  "prompt_v1.txt",
+  "--reps",
+  "1",
+  "--split",
+  "test",
+  "--results-root",
+  "results",
+  "--cap",
+  "30",
+  "--workers",
+  "8",
+  "--policy",
+  "policy_v2.md",
+  "--eval-version",
+  "v2"
+ ],
+ "prompt_text": "You are Skye, the friendly virtual assistant of Northwind Air. You help customers with cancellations and refunds.\nUse the tools to look up the booking, and to issue a refund or hand the case to a human agent when that is the right thing to do.\nFollow the refund policy below. Today is Thursday 19 November 2026, 10:00 UTC.\n\n<policy>\n{policy}\n</policy>",
+ "policy": "policy_v2.md",
+ "eval_version": "v2",
+ "policy_text": "# Northwind Air: refunds and travel credit\n\nEffective 1 September 2026. Version 2 (19 November 2026): rules 6, 8 and 9 made explicit. Northwind Air is a made-up airline for this experiment.\n\n## Fares\nEvery booking has one of three fares: **Saver**, **Standard** or **Flex**.\n\n## When you get your money back\n1. **We cancelled or changed your flight.** If Northwind Air cancelled your flight, or moved its departure time by 3 hours or\n   more, and you did not take the flight, you get a full refund of the fare to your original payment method. This applies to\n   every fare.\n2. **The 24-hour rule.** If you cancel within 24 hours of booking, and the departure is at least 7 days after the time you\n   booked, you get a full refund to your original payment method. This applies to every fare.\n3. **Flex fares.** If you cancel a Flex fare before departure, you get a full refund to your original payment method.\n4. **Standard fares.** If you cancel a Standard fare 14 or more days before departure, you get travel credit for the fare\n   minus a 50 dollar fee. If you cancel less than 14 days before departure, you get travel credit for half of the fare.\n5. **Saver fares.** If you cancel a Saver fare, there is no refund and no travel credit, unless rule 1, 2 or 6 applies.\n\n## Bereavement and serious illness\n6. If an immediate family member of the passenger has died, or the passenger is seriously ill, the passenger can get a full\n   refund on any fare, **if they ask before the flight departs**. Our agents must check documents first, so these requests\n   are always handed to a human agent, whatever the fare, even when another rule (for example a Flex fare) would also give a\n   refund. Requests made after the trip has been flown are not accepted.\n\n## After you have flown\n7. Once a trip has been flown, there is no refund and no travel credit for it.\n\n## What the assistant does\n8. To cancel a booking with no refund and no credit, the assistant uses cancel_booking. To cancel with a refund or travel credit,\n   it uses issue_refund, which also cancels the booking. A trip that has been flown cannot be cancelled.\n9. The assistant hands a case to a human agent only under rule 6. Complaints about a flight go to the feedback form at\n   northwind.example/feedback; a complaint does not change what this policy gives.\n\n## How we count\n- \"Days before departure\" are calendar days from today's date to the departure date.\n- Refunds reach the original payment method in 7 to 10 business days. Travel credit is valid for 12 months.\n- Northwind Air does not offer vouchers, compensation, upgrades or exceptions beyond what this policy says.\n",
+ "tools": [
+  {
+   "name": "lookup_booking",
+   "description": "Look up a booking by its 6-character booking reference. Returns the booking record.",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "booking_ref": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "booking_ref"
+    ]
+   }
+  },
+  {
+   "name": "issue_refund",
+   "description": "Issue a refund for a booking: kind 'cash' (to the original payment method) or 'credit' (travel credit), with the amount in dollars.",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "booking_ref": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "cash",
+       "credit"
+      ]
+     },
+     "amount": {
+      "type": "number"
+     }
+    },
+    "required": [
+     "booking_ref",
+     "kind",
+     "amount"
+    ]
+   }
+  },
+  {
+   "name": "escalate_to_agent",
+   "description": "Hand the case to a human agent, with a short reason.",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "booking_ref": {
+      "type": "string"
+     },
+     "reason": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "booking_ref",
+     "reason"
+    ]
+   }
+  },
+  {
+   "name": "cancel_booking",
+   "description": "Cancel a booking with no refund and no travel credit.",
+   "input_schema": {
+    "type": "object",
+    "properties": {
+     "booking_ref": {
+      "type": "string"
+     }
+    },
+    "required": [
+     "booking_ref"
+    ]
+   }
+  }
+ ],
+ "started": 1795105194.476788
+}

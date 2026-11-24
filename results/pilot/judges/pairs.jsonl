@@ -1,0 +1,6 @@
+{"model": "claude-haiku-5-5", "case": "S02-moved-4h-Saver-terse", "ab": "B", "ba": "A", "consistent": true, "cost": 0.0006778}
+{"model": "claude-haiku-5-5", "case": "S03-moved-3h-Standard-polite", "ab": "B", "ba": "B", "consistent": false, "cost": 0.0007075}
+{"model": "claude-haiku-5-5", "case": "S01-airline-cancelled-Saver-polite", "ab": "B", "ba": "B", "consistent": false, "cost": 0.0007757}
+{"model": "claude-sonnet-5-5", "case": "S02-moved-4h-Saver-terse", "ab": "B", "ba": "A", "consistent": true, "cost": 0.008056}
+{"model": "claude-sonnet-5-5", "case": "S03-moved-3h-Standard-polite", "ab": "B", "ba": "A", "consistent": true, "cost": 0.00929}
+{"model": "claude-sonnet-5-5", "case": "S01-airline-cancelled-Saver-polite", "ab": "B", "ba": "B", "consistent": false, "cost": 0.009464}
