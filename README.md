@@ -11,7 +11,7 @@ your own.
 
 ## Contents
 
-1. [Quick start (no API key, no cost)](#1-quick-start-no-api-key-no-cost)
+1. [Quick start — two ways to run](#1-quick-start--two-ways-to-run)
 2. [Requirements and setup](#2-requirements-and-setup)
 3. [What is inside](#3-what-is-inside)
 4. [How the bot and the eval work](#4-how-the-bot-and-the-eval-work)
@@ -26,21 +26,50 @@ your own.
 13. [Provenance](#13-provenance)
 14. [License](#14-license)
 
-## 1. Quick start (no API key, no cost)
+## 1. Quick start — two ways to run
+
+A live AI bot always calls a model API. Every real Claude conversation from the video (1,260+ runs) is saved in `results/`, so you can replay and re-score everything locally before spending anything — or plug in your own `ANTHROPIC_API_KEY` to run live experiments.
+
+| Mode | Needs API key? | What you can run |
+|---|---|---|
+| **1. Offline replay & re-scoring** | **No** ($0) | Replay any saved Claude conversation or full 1,260-run eval from `results/` with `replay.py`, inspect prompt diffs, and run all 16 unit tests that re-score every saved trace. |
+| **2. Live LLM bot & judge runs** | **Yes** (`ANTHROPIC_API_KEY`) | Run live bot conversations (`scripts/run_bot.py`) and LLM judges (`scripts/judges.py`) with a hard dollar spend cap (`--cap`). |
+
+Clone once (Python 3.10+, standard library only — nothing to install):
 
 ```sh
 git clone https://github.com/maheshagodekere/ai-evals-hands-on.git
 cd ai-evals-hands-on
+```
 
-# one saved conversation, step by step, with its six checks
+### Way 1: Without an API key (replay saved Claude runs & re-score locally)
+
+```sh
+# 1. Replay one saved Claude conversation, step by step, with its six code checks
 python3 replay.py conv results/main-v1 S10-about-two-weeks-Standard-polite
 
-# a whole saved eval run: 252 cases x 5 runs = 1,260 conversations
+# 2. Replay an entire saved eval run: 252 cases x 5 runs = 1,260 saved conversations
 python3 replay.py eval results/main-v1 --all-runs
 
-# the tests: re-score every saved conversation with today's code
+# 3. Run the unit tests: re-score every saved conversation locally with today's code
 python3 -m unittest
 ```
+
+### Way 2: With an Anthropic API key (run live Claude models)
+
+```sh
+export ANTHROPIC_API_KEY="your-key-here"
+
+# Small live run: 10 cases x 1 run on Claude Haiku 5.5 with a $1 hard spend cap
+python3 scripts/run_bot.py results/cases.jsonl runs/my-first-run \
+    --model claude-haiku-5-5 --prompt bot/prompt_v1.txt --reps 1 --limit 10 \
+    --results-root runs --cap 1
+
+# Replay and score your new live run
+python3 replay.py eval runs/my-first-run
+```
+
+See [Section 7](#7-run-it-yourself) for full live setup, spend caps (`--cap`), and cost breakdown.
 
 What you will see:
 
